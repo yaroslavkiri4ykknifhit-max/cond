@@ -70,6 +70,7 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body class="font-sans text-slate-800 antialiased bg-white">
 
@@ -138,11 +139,11 @@
                     <i class="fa-solid fa-shield-halved text-accent mr-2"></i> Официальная гарантия
                 </div>
                 <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
-                    Продажа и установка кондиционера в Минске <br>
+                    Продажа и установка кондиционеров в Минске и области <br>
                     <span class="gradient-text">под ключ!</span>
                 </h1>
                 <p class="text-xl text-slate-300 mb-10 font-light border-l-4 border-accent pl-4">
-                    Мы не просто продаем технику — мы создаем идеальный климат в вашем доме всего за один день. Без пыли, без скрытых переплат.
+                    Мы не просто продаем технику — мы создаем идеальный климат в вашем доме всего за один день. 
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#quiz" class="bg-gradient-to-r from-primary to-indigo-500 hover:from-primary hover:to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg text-center transition transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(14,165,233,0.7)]">
@@ -172,7 +173,7 @@
 
                 <div class="relative z-10">
                     <h2 class="text-3xl font-extrabold text-center mb-2 text-slate-800">Подобрать кондиционер</h2>
-                    <p class="text-center text-slate-500 mb-8">Ответьте на пару вопросов, и мы предложим лучшие варианты</p>
+                    <p class="text-center text-slate-500 mb-8">Ответьте на пару вопросов. И мы предложим лучшие варианты</p>
                     
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -187,14 +188,18 @@
                                 <input type="number" step="0.1" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Например: 2.7">
                             </div>
                             <!-- Тип помещения -->
-                            <div class="md:col-span-2 group">
+                            <div class="md:col-span-2 group relative" id="custom-select-container">
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Тип помещения</label>
-                                <select class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm appearance-none">
-                                    <option>Квартира</option>
-                                    <option>Дом / Коттедж</option>
-                                    <option>Офис / Коммерческое помещение</option>
-                                    <option>Другое</option>
-                                </select>
+                                <div id="custom-select-button" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm flex justify-between items-center cursor-pointer">
+                                    <span id="custom-select-value" class="text-slate-700">Квартира</span>
+                                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="custom-select-icon"></i>
+                                </div>
+                                <div id="custom-select-dropdown" class="absolute z-10 w-full mt-2 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden opacity-0 invisible transition-all duration-300 transform -translate-y-2">
+                                    <div class="px-4 py-3 hover:bg-slate-50 cursor-pointer transition select-option">Квартира</div>
+                                    <div class="px-4 py-3 hover:bg-slate-50 cursor-pointer transition select-option">Дом/коттедж/дача</div>
+                                    <div class="px-4 py-3 hover:bg-slate-50 cursor-pointer transition select-option">Другое</div>
+                                </div>
+                                <input type="hidden" name="room_type" id="room_type_input" value="Квартира">
                             </div>
                             <!-- Имя -->
                             <div class="group">
@@ -223,7 +228,7 @@
     </section>
 
     <!-- Advantages -->
-    <section id="advantages" class="py-24 bg-white relative overflow-hidden">
+    <section id="advantages" class="py-12 bg-white relative overflow-hidden">
         <!-- Decoration -->
         <div class="absolute -right-20 top-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
         <div class="absolute -left-20 bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
@@ -261,7 +266,7 @@
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-slate-800">Установка за 1 день</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Организуем доставку и монтаж в один день — быстро, четко и в удобное для вас время. Никаких затяжных ремонтов.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Организуем доставку и монтаж в один день — быстро, четко и в удобное для вас время. Никаких лишних ожиданий.</p>
                 </div>
 
                 <div class="group bg-white p-8 rounded-3xl border border-slate-100 hover:border-primary/30 shadow-sm hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
@@ -284,7 +289,7 @@
                     <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-indigo-500/10 rounded-2xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-ruler-combined"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-slate-800">Бесплатный выезд инженера</h3>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Выезд инженера</h3>
                     <p class="text-slate-500 text-sm leading-relaxed">Сложная планировка или идет ремонт? Наш специалист приедет, сделает замеры и найдет лучшее техническое решение.</p>
                 </div>
             </div>
@@ -336,9 +341,9 @@
                     </div>
                     <div class="w-full md:w-1/2">
                         <h3 class="text-3xl font-bold mb-4 text-slate-800">Мультисплит-система</h3>
-                        <p class="text-slate-500 mb-6 leading-relaxed">К одному наружному блоку на улице подключается несколько внутренних блоков в разных комнатах. Ее главный плюс — это эстетика (на фасаде висит всего один аккуратный ящик вместо батареи из кондиционеров).</p>
+                        <p class="text-slate-500 mb-6 leading-relaxed">К одному наружному блоку на улице подключается несколько внутренних блоков в разных комнатах. Главный плюс системы — это эстетика (на фасаде висит всего один аккуратный ящик вместо батареи из кондиционеров).</p>
                         <div class="bg-primary/5 p-4 rounded-xl border border-primary/20">
-                            <p class="text-sm text-slate-700"><i class="fa-solid fa-circle-exclamation text-primary mr-2"></i> <strong>Ограничение:</strong> все кондиционеры в доме могут работать только в одном общем режиме. Вы можете настроить разную температуру, но вся система должна либо одновременно охлаждать, либо обогревать.</p>
+                            <p class="text-sm text-slate-700"><i class="fa-solid fa-circle-exclamation text-primary mr-2"></i> <strong>Ограничение:</strong> все кондиционеры в доме могут работать только в одном общем режиме. Вы можете настроить разную температуру, но вся система должна одновременно либо охлаждать, либо обогревать.</p>
                         </div>
                     </div>
                 </div>
@@ -383,13 +388,13 @@
                         </div>
                     </div>
                     <div class="mb-6 pb-6 border-b border-slate-100">
-                        <p class="text-sm text-slate-600 font-medium"><i class="fa-solid fa-box-open text-primary mr-2"></i> В стоимость входит: трубы медные до 3х метров, изоляция, кабель, кронштейны, крепеж.</p>
+                        <p class="text-sm text-slate-600 font-medium"><i class="fa-solid fa-box-open text-primary mr-2"></i> Стандартный монтаж - это классический, доведенный до совершенства алгоритм установки, не требующий штробления.</p>
                     </div>
                     <ul class="space-y-4 text-slate-600 text-sm">
                         <li class="flex items-start"><i class="fa-solid fa-circle-check text-primary mt-1 mr-3"></i> <span><strong>Идеальное соседство:</strong> Внутренний блок у окна, внешний под окном.</span></li>
                         <li class="flex items-start"><i class="fa-solid fa-circle-check text-primary mt-1 mr-3"></i> <span><strong>Скрытая коммуникация:</strong> Трасса прячется в эстетичный короб.</span></li>
                         <li class="flex items-start"><i class="fa-solid fa-circle-check text-primary mt-1 mr-3"></i> <span><strong>Одно отверстие:</strong> Аккуратный шаг сквозь стену.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-primary mt-1 mr-3"></i> <span><strong>Чистый запуск:</strong> Вакуумирование системы.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-primary mt-1 mr-3"></i> <span><strong>Чистый запуск:</strong> Тестирование оборудования.</span></li>
                     </ul>
                 </div>
 
@@ -412,12 +417,16 @@
                     <ul class="space-y-4 text-slate-300 text-sm relative z-10">
                         <li class="flex items-start">
                             <div class="bg-primary/20 p-1 rounded mr-3 mt-0.5"><i class="fa-solid fa-1 text-primary text-xs"></i></div>
-                            <span><strong>Черновые работы:</strong> Штробление стен, укладка труб, вывод на улицу, установка внешнего блока, консервация концов.</span>
+                            <span><strong>Черновые работы:</strong> Штробление стен, укладка коммуникаций.</span>
                         </li>
                         <li class="flex items-start">
                             <div class="bg-primary/20 p-1 rounded mr-3 mt-0.5"><i class="fa-solid fa-2 text-primary text-xs"></i></div>
                             <span><strong>После отделки:</strong> Монтаж внутреннего блока на чистую стену, вакуумирование и пуск. Идеальный интерьер без проводов.</span>
                         </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600 font-medium">Идеальный интерьер без проводов и коробов.</span>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -538,7 +547,7 @@
                             </div>
                             <div class="bg-red-50 p-6 rounded-2xl border border-red-200 shadow-inner">
                                 <h3 class="text-base font-extrabold text-red-600 mb-2 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> КРИТИЧЕСКОЕ УСЛОВИЕ:</h3>
-                                <p class="text-red-800/80 text-sm font-medium leading-relaxed">Гарантия на монтажные работы сохраняется в полном объеме только при условии проведения ежегодного регулярного технического обслуживания (ТО) нашими специалистами. Первое ТО должно быть проведено не позднее, чем через 12 месяцев с даты монтажа.</p>
+                                <p class="text-amber-800/80 text-sm font-medium leading-relaxed">Гарантия на монтажные работы сохраняется в полном объеме только при условии проведения ежегодного регулярного технического обслуживания (ТО) нашими специалистами. Первое ТО должно быть проведено не позднее, чем через 12 месяцев с даты монтажа.</p>
                             </div>
                         </div>
                     </div>
@@ -550,113 +559,61 @@
     
     
     
-    <!-- Portfolio (Grid Masonry Style) -->
-    <section class="py-24 bg-white">
+    <!-- Portfolio (Carousel) -->
+    <section class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl lg:text-5xl font-extrabold text-center mb-16 text-slate-800" data-aos="fade-up">Наши работы</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-                <!-- Photo 1 (Large) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl md:col-span-2 md:row-span-2 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/images/media_1788904827647.jpg" alt="Наши работы 1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-4xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 2 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/images/media_1788904831672.jpg" alt="Наши работы 2" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 3 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/images/media_1788904831700.jpg" alt="Наши работы 3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 4 (Tall) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl md:row-span-2 cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/images/media_1788904831710.jpg" alt="Наши работы 4" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 5 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/images/media_1788905506967.jpg" alt="Наши работы 5" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 6 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/images/media_1788905507002.jpg" alt="Наши работы 6" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 7 (Wide) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl md:col-span-2 cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/images/media_1788905508980.jpg" alt="Наши работы 7" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 8 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/images/media_1788905509075.jpg" alt="Наши работы 8" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 9 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/images/media_1788906109030.jpg" alt="Наши работы 9" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 10 (Large) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl md:col-span-2 md:row-span-2 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/images/media_1788906109504.jpg" alt="Наши работы 10" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-4xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 11 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <img src="assets/images/media_1788906111927.jpg" alt="Наши работы 11" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Photo 12 -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-                    <img src="assets/images/media_1788906111930.jpg" alt="Наши работы 12" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
             
-                <!-- Photo 13 (Rough-in Work) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer" data-aos="fade-up" data-aos-delay="500">
-                    <img src="assets/images/media_1788906859426.jpg" alt="Наши работы 13" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+            <div class="swiper portfolio-swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper pb-14">
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788904827647.jpg" alt="Работа 1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788904831672.jpg" alt="Работа 2" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788904831700.jpg" alt="Работа 3" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788904831710.jpg" alt="Работа 4" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788905506967.jpg" alt="Работа 5" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788905507002.jpg" alt="Работа 6" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788905508980.jpg" alt="Работа 7" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788905509075.jpg" alt="Работа 8" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906109030.jpg" alt="Работа 9" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906109504.jpg" alt="Работа 10" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906111927.jpg" alt="Работа 11" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906111930.jpg" alt="Работа 12" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906859426.jpg" alt="Работа 13" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="swiper-slide rounded-2xl overflow-hidden relative group aspect-[4/3] shadow-sm hover:shadow-xl cursor-pointer">
+                        <img src="assets/images/media_1788906875407.jpg" alt="Работа 14" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
                     </div>
                 </div>
-                <!-- Photo 14 (Rough-in Work) -->
-                <div class="bg-slate-200 rounded-2xl flex items-center justify-center overflow-hidden relative group shadow-sm hover:shadow-xl cursor-pointer md:col-span-2" data-aos="fade-up" data-aos-delay="600">
-                    <img src="assets/images/media_1788906875407.jpg" alt="Наши работы 14" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <p class="text-slate-500 font-medium">Это лишь часть наших недавних объектов. <br> Мы гарантируем такой же чистый и профессиональный результат и у вас!</p>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Navigation -->
+                <div class="swiper-button-prev !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg hidden md:flex after:!text-xl"></div>
+                <div class="swiper-button-next !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg hidden md:flex after:!text-xl"></div>
             </div>
         </div>
     </section>
@@ -728,6 +685,73 @@
             easing: 'ease-out-cubic',
         });
 
+        
+        // Custom select logic
+        const selectContainer = document.getElementById('custom-select-container');
+        const selectBtn = document.getElementById('custom-select-button');
+        const selectDropdown = document.getElementById('custom-select-dropdown');
+        const selectValue = document.getElementById('custom-select-value');
+        const selectIcon = document.getElementById('custom-select-icon');
+        const selectInput = document.getElementById('room_type_input');
+        const options = document.querySelectorAll('.select-option');
+
+        if(selectBtn) {
+            selectBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectDropdown.classList.toggle('opacity-0');
+                selectDropdown.classList.toggle('invisible');
+                selectDropdown.classList.toggle('-translate-y-2');
+                selectIcon.classList.toggle('rotate-180');
+            });
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    selectValue.textContent = option.textContent;
+                    selectInput.value = option.textContent;
+                    selectDropdown.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                    selectIcon.classList.remove('rotate-180');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!selectContainer.contains(e.target)) {
+                    selectDropdown.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                    selectIcon.classList.remove('rotate-180');
+                }
+            });
+        }
+
+        // Swiper initialization
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.portfolio-swiper', {
+                slidesPerView: 1.2,
+                spaceBetween: 16,
+                loop: true,
+                centeredSlides: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                        centeredSlides: false,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        centeredSlides: false,
+                    },
+                }
+            });
+        }
+
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
@@ -741,5 +765,6 @@
         });
     </script>
 </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
