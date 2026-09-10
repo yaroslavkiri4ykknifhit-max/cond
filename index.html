@@ -53,7 +53,7 @@
             background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('assets/images/hero_ac_bg.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
@@ -127,7 +127,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-bg text-white overflow-hidden min-h-[90vh] flex items-center">
+    <section class="relative pt-28 pb-40 lg:pt-48 lg:pb-32 hero-bg text-white overflow-hidden min-h-[90vh] flex items-center">
         <!-- Animated Background Blobs -->
         <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div class="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
@@ -146,12 +146,15 @@
                     Мы не просто продаем технику — мы создаем идеальный климат в вашем доме всего за один день. 
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#quiz" class="bg-gradient-to-r from-primary to-indigo-500 hover:from-primary hover:to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-lg text-center transition transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(14,165,233,0.7)]">
+                    <a href="#quiz" class="bg-gradient-to-r from-primary to-indigo-500 hover:from-primary hover:to-indigo-600 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg text-center transition px-4 leading-snug transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(14,165,233,0.7)]">
                         Подобрать кондиционер
                     </a>
-                    <a href="#advantages" class="bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg text-center transition flex items-center justify-center gap-2 group">
+                    <a href="#advantages" class="bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold text-base sm:text-lg text-center transition px-4 leading-snug flex items-center justify-center gap-2 group">
                         Узнать больше <i class="fa-solid fa-arrow-down group-hover:translate-y-1 transition"></i>
                     </a>
+                </div>
+                <div class="mt-12 lg:hidden flex justify-center" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="assets/images/floating_ac.png?v=3" alt="Кондиционер" class="w-full max-w-xs animate-float" style="filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));">
                 </div>
             </div>
         </div>
@@ -190,7 +193,7 @@
                             <!-- Тип помещения -->
                             <div class="md:col-span-2 group relative" id="custom-select-container">
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Тип помещения</label>
-                                <div id="custom-select-button" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm flex justify-between items-center cursor-pointer">
+                                <div id="custom-select-button" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm flex justify-between items-center cursor-pointer text-sm sm:text-base">
                                     <span id="custom-select-value" class="text-slate-700">Квартира</span>
                                     <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300" id="custom-select-icon"></i>
                                 </div>
@@ -218,7 +221,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-5 rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_30px_-10px_rgba(14,165,233,0.5)] transform hover:-translate-y-1 mt-6 text-lg tracking-wide">
+                        <button type="button" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-5 rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_30px_-10px_rgba(14,165,233,0.5)] transform hover:-translate-y-1 mt-6 text-base sm:text-lg tracking-wide leading-tight px-2">
                             Получить расчет стоимости <i class="fa-solid fa-arrow-right ml-2"></i>
                         </button>
                     </form>
@@ -235,7 +238,7 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-                <h2 class="text-3xl lg:text-5xl font-extrabold mb-6 text-slate-800">
+                <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold mb-6 text-slate-800">
                     Почему стоит купить кондиционер <br><span class="gradient-text">именно у нас?</span>
                 </h2>
                 <p class="text-lg text-slate-600">
@@ -299,7 +302,7 @@
     <!-- Catalog Types (Alternating Layout with Images) -->
     <section class="py-24 bg-slate-50 border-y border-slate-200/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl lg:text-5xl font-extrabold text-center mb-20 text-slate-800" data-aos="fade-down">Кондиционеры, которые мы предлагаем</h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-center mb-20 text-slate-800" data-aos="fade-down">Кондиционеры, которые мы предлагаем</h2>
             
             <div class="space-y-24">
                 <!-- Type 1 -->
@@ -370,7 +373,7 @@
     <section id="services" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-800 mb-4">Наши Услуги</h2>
+                <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-slate-800 mb-4">Наши Услуги</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-indigo-500 mx-auto rounded-full"></div>
             </div>
             
@@ -461,7 +464,7 @@
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary via-dark to-dark"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h2 class="text-3xl lg:text-5xl font-extrabold text-center mb-16" data-aos="fade-up">6 простых шагов <span class="text-primary">к комфорту</span></h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-center mb-16" data-aos="fade-up">6 простых шагов <span class="text-primary">к комфорту</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Steps -->
@@ -562,7 +565,7 @@
     <!-- Portfolio (Carousel) -->
     <section class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl lg:text-5xl font-extrabold text-center mb-16 text-slate-800" data-aos="fade-up">Наши работы</h2>
+            <h2 class="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-center mb-16 text-slate-800" data-aos="fade-up">Наши работы</h2>
             
             <div class="swiper portfolio-swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper pb-14">
