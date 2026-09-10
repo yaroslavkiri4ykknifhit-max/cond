@@ -612,8 +612,8 @@
                 <!-- Pagination -->
                 <div class="swiper-pagination"></div>
                 <!-- Navigation -->
-                <div class="swiper-button-prev !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg flex after:!text-xl scale-75 md:scale-100"></div>
-                <div class="swiper-button-next !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg flex after:!text-xl scale-75 md:scale-100"></div>
+                <div class="swiper-button-prev !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg flex scale-75 md:scale-100 after:hidden"><i class="fa-solid fa-chevron-left text-xl"></i></div>
+                <div class="swiper-button-next !text-primary !w-12 !h-12 bg-white/80 backdrop-blur rounded-full shadow-lg flex scale-75 md:scale-100 after:hidden"><i class="fa-solid fa-chevron-right text-xl"></i></div>
             </div>
         </div>
     </section>
@@ -753,6 +753,40 @@
             });
         }
 
+
+        // Lightbox logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        document.querySelectorAll('.portfolio-swiper .swiper-slide img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                lightboxImg.src = e.target.src;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                // trigger reflow
+                void lightbox.offsetWidth;
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
+            }, 300);
+        };
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                closeLightbox();
+            }
+        });
+
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
@@ -766,5 +800,12 @@
         });
     </script>
 </div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm cursor-pointer">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition p-4">&times;</button>
+    <img id="lightbox-img" src="" alt="Zoomed" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default">
+</div>
+
 </body>
 </html>
