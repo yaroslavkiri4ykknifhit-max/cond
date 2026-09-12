@@ -698,6 +698,105 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- Callback Modal -->
+<div id="callback-modal" class="fixed inset-0 bg-black/60 z-[120] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300 relative p-8" id="callback-content">
+        <button id="btn-callback-close" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <h3 class="text-2xl font-bold text-slate-800 mb-2">Обратный звонок</h3>
+        <p class="text-slate-500 mb-6 text-sm">Оставьте ваши контакты, и мы перезвоним в ближайшее время для консультации.</p>
+        <form id="callback-form" class="space-y-4">
+            <div>
+                <input type="text" required placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
+            </div>
+            <div>
+                <input type="tel" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
+            </div>
+            <label class="flex items-start gap-3 mt-4 cursor-pointer">
+                <input type="checkbox" required class="mt-1 w-4 h-4 text-primary bg-slate-100 border-slate-300 rounded focus:ring-primary focus:ring-2">
+                <span class="text-[11px] text-slate-500 leading-tight">
+                    Я даю согласие на обработку моих персональных данных (имя, телефон) для обратной связи и проведения устной консультации в соответствии с <a href="privacy.html" class="text-primary hover:underline" target="_blank">Политикой конфиденциальности</a>.
+                </span>
+            </label>
+            <button type="submit" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-4 rounded-xl transition mt-4">Жду звонка</button>
+        </form>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm cursor-pointer">
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition p-4">&times;</button>
+    <img id="lightbox-img" src="" alt="Zoomed" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default">
+</div>
+
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] transform translate-y-full transition-transform duration-500">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Мы используем файлы cookie 🍪</h3>
+            <p class="text-sm text-slate-600">
+                Мы используем файлы cookie для улучшения работы сайта, анализа трафика и персонализации рекламы. Вы можете принять все файлы, отклонить необязательные или настроить их индивидуально. Подробнее в нашей <a href="cookie.html" class="text-primary hover:underline">Политике в отношении файлов cookie</a>.
+            </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+            <button id="btn-cookie-settings" class="px-6 py-2 border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition w-full sm:w-auto">Настройки</button>
+            <button id="btn-cookie-reject" class="px-6 py-2 border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition w-full sm:w-auto">Отклонить всё</button>
+            <button id="btn-cookie-accept" class="px-6 py-2 bg-primary text-white font-bold rounded-xl hover:bg-sky-600 transition shadow-lg w-full sm:w-auto">Принять всё</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookie-settings-modal" class="fixed inset-0 bg-black/60 z-[110] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 relative" id="cookie-settings-content">
+        <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+            <h3 class="text-xl font-bold text-slate-800">Настройки файлов cookie</h3>
+            <button id="btn-cookie-close" class="text-slate-400 hover:text-slate-700 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <div class="p-6 space-y-6 max-h-[60vh] overflow-y-auto">
+            <!-- Tech Cookies (always on) -->
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h4 class="font-bold text-slate-800">Технические (обязательные)</h4>
+                    <p class="text-xs text-slate-500 mt-1">Необходимы для работы сайта. Не могут быть отключены.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
+                    <input type="checkbox" checked disabled class="absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-not-allowed border-blue-500 right-0" style="right:0"/>
+                    <label class="block overflow-hidden h-6 rounded-full bg-blue-500 cursor-not-allowed w-12"></label>
+                </div>
+            </div>
+            
+            <!-- Analytics -->
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h4 class="font-bold text-slate-800">Аналитические и статистические</h4>
+                    <p class="text-xs text-slate-500 mt-1">Помогают нам понять, как посетители взаимодействуют с сайтом.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
+                    <input type="checkbox" id="cookie-analytics" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="cookie-analytics" class="toggle-label block overflow-hidden rounded-full cursor-pointer"></label>
+                </div>
+            </div>
+
+            <!-- Marketing -->
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h4 class="font-bold text-slate-800">Маркетинговые (рекламные)</h4>
+                    <p class="text-xs text-slate-500 mt-1">Используются для показа релевантной рекламы.</p>
+                </div>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
+                    <input type="checkbox" id="cookie-marketing" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                    <label for="cookie-marketing" class="toggle-label block overflow-hidden rounded-full cursor-pointer"></label>
+                </div>
+            </div>
+        </div>
+        <div class="p-6 border-t border-slate-100 bg-slate-50 flex justify-end gap-4">
+            <button id="btn-cookie-save" class="px-6 py-2 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition w-full sm:w-auto">Сохранить выбор</button>
+        </div>
+    </div>
+</div>
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -946,103 +1045,6 @@
 </div>
 
 
-<!-- Callback Modal -->
-<div id="callback-modal" class="fixed inset-0 bg-black/60 z-[120] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300 relative p-8" id="callback-content">
-        <button id="btn-callback-close" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
-        <h3 class="text-2xl font-bold text-slate-800 mb-2">Обратный звонок</h3>
-        <p class="text-slate-500 mb-6 text-sm">Оставьте ваши контакты, и мы перезвоним в ближайшее время для консультации.</p>
-        <form id="callback-form" class="space-y-4">
-            <div>
-                <input type="text" required placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
-            </div>
-            <div>
-                <input type="tel" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
-            </div>
-            <label class="flex items-start gap-3 mt-4 cursor-pointer">
-                <input type="checkbox" required class="mt-1 w-4 h-4 text-primary bg-slate-100 border-slate-300 rounded focus:ring-primary focus:ring-2">
-                <span class="text-[11px] text-slate-500 leading-tight">
-                    Я даю согласие на обработку моих персональных данных (имя, телефон) для обратной связи и проведения устной консультации в соответствии с <a href="privacy.html" class="text-primary hover:underline" target="_blank">Политикой конфиденциальности</a>.
-                </span>
-            </label>
-            <button type="submit" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-4 rounded-xl transition mt-4">Жду звонка</button>
-        </form>
-    </div>
-</div>
-
-<!-- Lightbox -->
-<div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm cursor-pointer">
-    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition p-4">&times;</button>
-    <img id="lightbox-img" src="" alt="Zoomed" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300 cursor-default">
-</div>
-
-
-<!-- Cookie Consent Banner -->
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] transform translate-y-full transition-transform duration-500">
-    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex-1">
-            <h3 class="text-lg font-bold text-slate-800 mb-2">Мы используем файлы cookie 🍪</h3>
-            <p class="text-sm text-slate-600">
-                Мы используем файлы cookie для улучшения работы сайта, анализа трафика и персонализации рекламы. Вы можете принять все файлы, отклонить необязательные или настроить их индивидуально. Подробнее в нашей <a href="cookie.html" class="text-primary hover:underline">Политике в отношении файлов cookie</a>.
-            </p>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-            <button id="btn-cookie-settings" class="px-6 py-2 border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition w-full sm:w-auto">Настройки</button>
-            <button id="btn-cookie-reject" class="px-6 py-2 border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition w-full sm:w-auto">Отклонить всё</button>
-            <button id="btn-cookie-accept" class="px-6 py-2 bg-primary text-white font-bold rounded-xl hover:bg-sky-600 transition shadow-lg w-full sm:w-auto">Принять всё</button>
-        </div>
-    </div>
-</div>
-
-<!-- Cookie Settings Modal -->
-<div id="cookie-settings-modal" class="fixed inset-0 bg-black/60 z-[110] hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 relative" id="cookie-settings-content">
-        <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-            <h3 class="text-xl font-bold text-slate-800">Настройки файлов cookie</h3>
-            <button id="btn-cookie-close" class="text-slate-400 hover:text-slate-700 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
-        </div>
-        <div class="p-6 space-y-6 max-h-[60vh] overflow-y-auto">
-            <!-- Tech Cookies (always on) -->
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <h4 class="font-bold text-slate-800">Технические (обязательные)</h4>
-                    <p class="text-xs text-slate-500 mt-1">Необходимы для работы сайта. Не могут быть отключены.</p>
-                </div>
-                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
-                    <input type="checkbox" checked disabled class="absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-not-allowed border-blue-500 right-0" style="right:0"/>
-                    <label class="block overflow-hidden h-6 rounded-full bg-blue-500 cursor-not-allowed w-12"></label>
-                </div>
-            </div>
-            
-            <!-- Analytics -->
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <h4 class="font-bold text-slate-800">Аналитические и статистические</h4>
-                    <p class="text-xs text-slate-500 mt-1">Помогают нам понять, как посетители взаимодействуют с сайтом.</p>
-                </div>
-                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
-                    <input type="checkbox" id="cookie-analytics" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                    <label for="cookie-analytics" class="toggle-label block overflow-hidden rounded-full cursor-pointer"></label>
-                </div>
-            </div>
-
-            <!-- Marketing -->
-            <div class="flex items-start justify-between gap-4">
-                <div>
-                    <h4 class="font-bold text-slate-800">Маркетинговые (рекламные)</h4>
-                    <p class="text-xs text-slate-500 mt-1">Используются для показа релевантной рекламы.</p>
-                </div>
-                <div class="relative inline-block w-12 mr-2 align-middle select-none mt-1 shrink-0">
-                    <input type="checkbox" id="cookie-marketing" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-                    <label for="cookie-marketing" class="toggle-label block overflow-hidden rounded-full cursor-pointer"></label>
-                </div>
-            </div>
-        </div>
-        <div class="p-6 border-t border-slate-100 bg-slate-50 flex justify-end gap-4">
-            <button id="btn-cookie-save" class="px-6 py-2 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition w-full sm:w-auto">Сохранить выбор</button>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
