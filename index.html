@@ -203,17 +203,17 @@
                     <h2 class="text-3xl font-extrabold text-center mb-2 text-slate-800">Подобрать кондиционер</h2>
                     <p class="text-center text-slate-500 mb-8">Ответьте на пару вопросов. И мы предложим лучшие варианты</p>
                     
-                    <form class="space-y-6">
+                    <form id="quiz-form" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Площадь -->
                             <div class="group">
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Площадь помещения (м²)</label>
-                                <input type="number" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Например: 25">
+                                <input type="number" name="area" required class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Например: 25">
                             </div>
                             <!-- Высота потолка -->
                             <div class="group">
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Высота потолка (м)</label>
-                                <input type="number" step="0.1" class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Например: 2.7">
+                                <input type="number" step="0.1" name="height" required class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Например: 2.7">
                             </div>
                             <!-- Тип помещения -->
                             <div class="md:col-span-2 group relative" id="custom-select-container">
@@ -234,7 +234,7 @@
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Ваше имя</label>
                                 <div class="relative">
                                     <i class="fa-regular fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                                    <input type="text" class="w-full pl-11 pr-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Иван">
+                                    <input type="text" name="name" required class="w-full pl-11 pr-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="Иван">
                                 </div>
                             </div>
                             <!-- Телефон -->
@@ -242,7 +242,7 @@
                                 <label class="block text-sm font-semibold text-slate-700 mb-2 transition group-focus-within:text-primary">Номер телефона</label>
                                 <div class="relative">
                                     <i class="fa-solid fa-phone absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
-                                    <input type="tel" class="w-full pl-11 pr-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="+375 (__) ___-__-__">
+                                    <input type="tel" name="phone" required class="w-full pl-11 pr-4 py-4 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition bg-white/50 backdrop-blur-sm" placeholder="+375 (__) ___-__-__">
                                 </div>
                             </div>
                         </div>
@@ -253,7 +253,7 @@
                                 Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" class="text-primary hover:underline" target="_blank">Политикой конфиденциальности</a>.
                             </span>
                         </label>
-                        <button type="button" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-5 rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_30px_-10px_rgba(14,165,233,0.5)] transform hover:-translate-y-1 mt-6 text-base sm:text-lg tracking-wide leading-tight px-2">
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-primary text-white font-bold py-5 rounded-xl transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_30px_-10px_rgba(14,165,233,0.5)] transform hover:-translate-y-1 mt-6 text-base sm:text-lg tracking-wide leading-tight px-2">
                             Получить расчет стоимости <i class="fa-solid fa-arrow-right ml-2"></i>
                         </button>
                     </form>
@@ -715,10 +715,10 @@
         <p class="text-slate-500 mb-6 text-sm">Оставьте ваши контакты, и мы перезвоним в ближайшее время для консультации.</p>
         <form id="callback-form" class="space-y-4">
             <div>
-                <input type="text" required placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
+                <input type="text" name="name" required placeholder="Ваше имя" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
             </div>
             <div>
-                <input type="tel" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
+                <input type="tel" name="phone" required placeholder="+375 (__) ___-__-__" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition">
             </div>
             <label class="flex items-start gap-3 mt-4 cursor-pointer">
                 <input type="checkbox" required class="mt-1 w-4 h-4 text-primary bg-slate-100 border-slate-300 rounded focus:ring-primary focus:ring-2">
@@ -1040,6 +1040,61 @@
         });
 
         
+        
+        // Form Submission Logic
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Отправка...';
+            
+            const formData = new FormData(form);
+            formData.append('form_id', form.id);
+            
+            try {
+                const response = await fetch('send.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                if(result.success) {
+                    submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Заявка отправлена!';
+                    submitBtn.classList.replace('bg-slate-900', 'bg-green-500');
+                    submitBtn.classList.replace('hover:bg-primary', 'hover:bg-green-600');
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnHtml;
+                        submitBtn.classList.replace('bg-green-500', 'bg-slate-900');
+                        submitBtn.classList.replace('hover:bg-green-600', 'hover:bg-primary');
+                        submitBtn.disabled = false;
+                        if(form.id === 'callback-form') {
+                            document.getElementById('btn-callback-close').click();
+                        }
+                    }, 3000);
+                } else {
+                    alert('Ошибка при отправке: ' + result.error);
+                    submitBtn.innerHTML = originalBtnHtml;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert('Ошибка соединения с сервером. Попробуйте позже.');
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.disabled = false;
+            }
+        }
+
+        const quizForm = document.getElementById('quiz-form');
+        if(quizForm) quizForm.addEventListener('submit', handleFormSubmit);
+        
+        const callbackForm = document.getElementById('callback-form');
+        if(callbackForm) callbackForm.addEventListener('submit', handleFormSubmit);
+
         // Mobile menu logic
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
