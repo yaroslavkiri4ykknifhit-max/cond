@@ -125,8 +125,19 @@
         .toggle-label { width: 3rem; height: 1.5rem; background-color: #cbd5e1; transition: all 0.3s; }
     </style>
 
-    <!-- Google Tag Manager / Yandex Metrika Placeholders -->
-    <!-- Вставьте код счетчиков сюда перед запуском рекламы -->
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112702773', 'ym');
+
+    ym(112702773, 'init', {ssr:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112702773" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body class="font-sans text-slate-800 antialiased bg-white overflow-x-hidden">
 
@@ -1115,6 +1126,10 @@
                 
                 const result = await response.json();
                 if(result.success) {
+                    if (typeof ym === 'function') {
+                        ym(112702773, 'reachGoal', 'lead');
+                        console.log('Metrika goal lead sent');
+                    }
                     submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Заявка отправлена!';
                     submitBtn.classList.replace('bg-slate-900', 'bg-green-500');
                     submitBtn.classList.replace('hover:bg-primary', 'hover:bg-green-600');
